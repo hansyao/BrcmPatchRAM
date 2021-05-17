@@ -1,12 +1,35 @@
 BrcmPatchRAM
 ============
 
-[![Build Status](https://github.com/acidanthera/BrcmPatchRAM/workflows/CI/badge.svg?branch=master)](https://github.com/acidanthera/BrcmPatchRAM/actions) [![Scan Status](https://scan.coverity.com/projects/22191/badge.svg?flat=1)](https://scan.coverity.com/projects/22191)
+[![Build Status](https://github.com/hansyao/BrcmPatchRAM/workflows/CI/badge.svg?branch=master)](https://github.com/hansyao/BrcmPatchRAM/actions) [![Scan Status](https://scan.coverity.com/projects/22191/badge.svg?flat=1)](https://scan.coverity.com/projects/22191)
 
 #### 翻译语言
 
 - 简体中文
 - [English](./README.md)
+
+```
+为戴尔无线/蓝牙驱动特别优化 - Dell DW1550 4352+20702 combo (BCM4352 802.11ac Wireless Network Adapter [14e4:43b1])
+```
+仅仅保留了BCM4352的固件，因此，开机驱动加载时间大大缩短。
+
+与原版相比，Kexts文件大小大大缩减，对比如下:
+
+| Kexts | 此修改版驱动 | 原版驱动 [acidanthera](https://github.com/acidanthera/BrcmPatchRAM) | Dell Precision M4800 OpenCore - BigSur驱动注入|
+| :---   | :---: | :---: | :--- |
+| **BrcmBluetoothInjector** | 2KB | 46KB | to be injected (1) |
+| BrcmBluetoothInjectorLegacy.kext | 2KB | 46KB | None |
+| **BrcmFirmwareData.kext** | 92KB | 2.8MB | To be injected (2) |
+| BrcmFirmwareRepo.kext | 92KB | 2.8MB | None |
+| BrcmNonPatchRAM.kext | 35KB | 35KB  | None |
+| BrcmNonPatchRAM2.kext | 38KB | 38KB | None |
+| BrcmPatch.kext | 88KB | 154KB | None |
+| BrcmPatchRAM2.kext | 92KB | 159KB | None |
+| **BrcmPatchRAM3.kext**| 81KB | 148KB | To be injected (3) |
+
+&nbsp;
+
+---
 
 大多数Broadcom USB蓝牙设备都使用称为RAMUSB的系统。 RAMUSB允许动态更新设备的固件，但是在关闭计算机时，先前应用的任何更新都会丢失。
 

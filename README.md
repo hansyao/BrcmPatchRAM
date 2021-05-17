@@ -1,12 +1,35 @@
 BrcmPatchRAM
 ============
 
-[![Build Status](https://github.com/acidanthera/BrcmPatchRAM/workflows/CI/badge.svg?branch=master)](https://github.com/acidanthera/BrcmPatchRAM/actions) [![Scan Status](https://scan.coverity.com/projects/22191/badge.svg?flat=1)](https://scan.coverity.com/projects/22191)
+[![Build Status](https://github.com/hansyao/BrcmPatchRAM/workflows/CI/badge.svg?branch=master)](https://github.com/hansyao/BrcmPatchRAM/actions) [![Scan Status](https://scan.coverity.com/projects/22191/badge.svg?flat=1)](https://scan.coverity.com/projects/22191)
 
 ### Translate Language
 
 - [简体中文](./README_CN.md)
 - English
+
+```
+specifically optimzed for Dell DW1550 4352+20702 combo (BCM4352 802.11ac Wireless Network Adapter [14e4:43b1])
+```
+only keep firmware for BCM4352, therefore, the driver would be loaded much more faster when bootup. Please **DO NOT** use for other broadcom wireless card rather than BCM4352.
+
+Kexts file size compare to original :
+
+| Kexts | this repo | original repo [acidanthera](https://github.com/acidanthera/BrcmPatchRAM) | Kernel Injection in OpenCore Big Sur for Dell Precision M4800 |
+| :---   | :---: | :---: | :--- |
+| **BrcmBluetoothInjector** | 2KB | 46KB | to be injected (1) |
+| BrcmBluetoothInjectorLegacy.kext | 2KB | 46KB |  |
+| **BrcmFirmwareData.kext** | 92KB | 2.8MB | To be injected (2) |
+| BrcmFirmwareRepo.kext | 92KB | 2.8MB |  |
+| BrcmNonPatchRAM.kext | 35KB | 35KB  |  |
+| BrcmNonPatchRAM2.kext | 38KB | 38KB |  |
+| BrcmPatch.kext | 88KB | 154KB |  |
+| BrcmPatchRAM2.kext | 92KB | 159KB | |
+| **BrcmPatchRAM3.kext**| 81KB | 148KB | To be injected (3) |
+
+&nbsp;
+
+---
 
 Most Broadcom USB Bluetooth devices make use of a system called RAMUSB. RAMUSB allows the firmware for the device to be updated on-the-fly, however any updates previously applied are lost when shutting down the machine.
 
@@ -16,7 +39,7 @@ Note that the original Apple Broadcom bluetooth devices are not RAMUSB devices, 
 
 ### Installation
 
-__Note if you have an Apple MacBook/iMac/Mac Pro etc, follow the [Mac instructions](https://github.com/acidanthera/BrcmPatchRAM/blob/master/README-Mac.md)__
+__Note if you have an Apple MacBook/iMac/Mac Pro etc, follow the [Mac instructions](https://github.com/hansyao/BrcmPatchRAM/blob/master/README-Mac.md)__
 
 
 Install one of BrcmPatchRAM.kext or BrcmPatchRAM2.kext or BrcmPatchRAM3.kext depending on macOS version, never both.
