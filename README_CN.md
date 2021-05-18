@@ -15,7 +15,7 @@ BrcmPatchRAM
 
 与原版相比，Kexts文件大小大大缩减，对比如下:
 
-| Kexts | 此修改版驱动 | 原版驱动 [acidanthera](https://github.com/acidanthera/BrcmPatchRAM) | Dell Precision M4800 OpenCore - BigSur驱动注入|
+| Kexts | 此修改版驱动 | 原版驱动 [acidanthera](https://github.com/acidanthera/BrcmPatchRAM) | Dell Precision M4800 OpenCore - BigSur驱动注入 |
 | :---   | :---: | :---: | :--- |
 | **BrcmBluetoothInjector** | 2KB | 46KB | to be injected (1) |
 | BrcmBluetoothInjectorLegacy.kext | 2KB | 46KB | None |
